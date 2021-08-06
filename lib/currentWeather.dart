@@ -18,10 +18,10 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
     return Scaffold(
       body: Center(
           child: FutureBuilder(
-        builder: (contex, snapshot) {
+        builder: (context, snapshot) {
           if (snapshot != null) {
-            Weather _weather = snapshot.data;
-            if (_weather == null) {
+            this._weather = snapshot.data;
+            if (this._weather == null) {
               return Text("Error getting weather.");
             } else {
               return weatherBox(_weather);
@@ -47,9 +47,9 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
   }
 
   Future getCurrentWeather() async {
-    Weather weather;
+    Weather? weather = null;
     String city = "berlin";
-    String apiKey = "api key";
+    String apiKey = "2e860b5c1309086f1543c5c566ae9d68";
     var url =
         "https://api.openweathermap.org/data/2.5/weather?q=$city&app_id=$apiKey&units=metric";
     final response = await http.get(url);

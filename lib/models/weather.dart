@@ -5,7 +5,12 @@ class Weather {
   final double high;
   final String description;
 
-  Weather({this.temp, this.feelsLike, this.low, this.high, this.description});
+  Weather(
+      {required this.temp,
+      required this.feelsLike,
+      required this.low,
+      required this.high,
+      required this.description});
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
